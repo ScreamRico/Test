@@ -1,0 +1,82 @@
+:root {
+  --panel: #1f2937;
+  --item: #273449;
+  --item-hover: #334155;
+  --primary: #3b82f6;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --text: #f9fafb;
+  --sub: #9ca3af;
+  --radius: 18px;
+  --trans: 220ms cubic-bezier(.25,.8,.25,1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: transparent;
+  color: var(--text);
+}
+
+.wrapper {
+  position: fixed;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.panel {
+  width: 420px;
+  max-height: 70vh;
+  background: var(--panel);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0,0,0,.6);
+  transform: translateX(120%);
+  transition: transform var(--trans);
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+.wrapper.show .panel { transform: translateX(0); }
+.hidden { display: none !important; }
+
+.panel-header {
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111827;
+}
+
+.title { font-weight: 700; font-size: 20px; color: var(--primary); }
+.close { background: transparent; border: 0; color: var(--sub); font-size: 20px; cursor: pointer; }
+.close:hover { color: var(--danger); }
+
+.list { flex: 1; padding: 12px; overflow-y: auto; }
+
+.job {
+  background: var(--item);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+  transition: background var(--trans);
+  display: flex;
+  flex-direction: column;
+}
+.job:hover { background: var(--item-hover); }
+
+.job-label { font-size: 18px; font-weight: 700; }
+.job-grade { font-size: 14px; color: var(--sub); margin-top: 2px; }
+.job-salary { font-size: 14px; font-weight: 700; margin-top: 6px; color: var(--success); }
+
+.actions { margin-top: 10px; display: flex; gap: 8px; }
+.btn { flex: 1; padding: 8px 12px; border-radius: 8px; border: none; cursor: pointer; font-weight: 700; font-size: 13px; transition: background var(--trans), transform var(--trans); }
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--primary); color: white; }
+.btn-success { background: var(--success); color: white; }
+.btn-danger { background: var(--danger); color: white; }
+.btn-secondary { background: #374151; color: #d1d5db; }
